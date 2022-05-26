@@ -27,15 +27,42 @@ using namespace std;
 // }
 
 // while loops
-int main() {
+// int main() {
 
-    char answer;
+//     char answer;
 
-    while (answer != 'y'){
-        cout << "wanna finish?" << endl;
-        cin >> answer;
-    }
+//     do {
+
+//         cout << "wanna finish?" << endl;
+//         cin >> answer;
     
-    cout << "get the hell out";
+//     } while (answer != 'y');
+    
+//     cout << "get the hell out";
 
+// }
+
+// functions
+
+// int add(int x, int y = 15) {
+
+//     return x + y;
+
+// }
+
+// int main() {
+
+//     cout << add(100);
+
+// }
+
+
+// Standar library
+
+#include <string>
+
+
+int main() {
+    string text = "10";
+    cout << stoi(text) + 105;
 }
