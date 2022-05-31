@@ -1,4 +1,5 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
@@ -20,13 +21,12 @@ using namespace std;
 
 // data structures
 
-#include <string>
 
-struct Person
-{
-    string name;
-    int age;
-};
+// struct Person
+// {
+//     string name;
+//     int age;
+// };
 
 
 // int main() {
@@ -46,27 +46,71 @@ struct Person
 
 // unions and enumerations
 
-int main() {
+// int main() {
 
-    // with unions you can save in the same memory space different values
+//     // with unions you can save in the same memory space different values
 
-    union number_letter
-    {
-        int number;
-        char letter;
-    };
+//     union number_letter
+//     {
+//         int number;
+//         char letter;
+//     };
 
-    number_letter x = {'A'};
+//     number_letter x = {'A'};
     
 
-    // cout << "X like a number: " << (char) x.number << endl;
-    // cout << "X like a letter: " << x.letter << endl;
+//     // cout << "X like a number: " << (char) x.number << endl;
+//     // cout << "X like a letter: " << x.letter << endl;
 
 
-    enum week_days {monday='m', tuesday, wednesday};
+//     enum week_days {monday='m', tuesday, wednesday};
 
-    week_days day = monday;
+//     week_days day = monday;
 
-    cout << (char)day;
+//     cout << (char)day;
+
+// }
+
+
+// Object oriented programming
+
+
+class Person { 
+private:
+    string name;
+    int age;
+
+public:
+    Person(string n, int e) : name(n), age(e) {}
+
+    // Person(string n) {
+
+    // }
+
+    ~Person(){
+        // do this when using pointers
+        cout << "destructor" << endl;
+        // it is executed when a class is done
+    }
+
+    string greeting(){
+        return name;
+    }
+
+};
+
+int main() {
+
+    Person p = Person("Andres", 20);
+    Person *p2 = new Person("Camila", 18);
+
+    // cout << p.name;
+    // cout << p2->name;
+
+    cout << p2->greeting() << endl;
+
+    delete p2;
+
+
 
 }
