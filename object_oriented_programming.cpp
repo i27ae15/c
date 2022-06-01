@@ -75,42 +75,198 @@ using namespace std;
 // Object oriented programming
 
 
-class Person { 
-private:
-    string name;
-    int age;
+// class Person { 
+// private:
+//     string name;
+//     int age;
 
-public:
-    Person(string n, int e) : name(n), age(e) {}
+// public:
+//     Person(string n, int e) : name(n), age(e) {}
 
-    // Person(string n) {
+//     // Person(string n) {
 
-    // }
+//     // }
 
-    ~Person(){
-        // do this when using pointers
-        cout << "destructor" << endl;
-        // it is executed when a class is done
+//     ~Person(){
+//         // do this when using pointers
+//         cout << "destructor" << endl;
+//         // it is executed when a class is done
+//     }
+
+//     string greeting(){
+//         return name;
+//     }
+
+// };
+
+// int main() {
+
+//     Person p = Person("Andres", 20);
+//     Person *p2 = new Person("Camila", 18);
+
+//     // cout << p.name;
+//     // cout << p2->name;
+
+//     cout << p2->greeting() << endl;
+
+//     delete p2;
+
+
+
+//}
+
+
+// class Person { 
+// private:
+
+//     string name;
+//     int age;
+
+// public:
+
+//     static int people_number;
+
+
+//     Person(string name, int age);
+
+//     ~Person(){
+//         // do this when using pointers
+//         cout << "destructor" << endl;
+//         // it is executed when a class is done
+//     }
+
+//     Person &updateName(string name){
+//         this->name = name;
+//         return *this;
+//     }
+
+//     Person &changeAge(int age) {
+//         this->age = age;
+//         return *this;
+//     }
+
+//     void greeting();
+
+// };
+
+// int Person::people_number = 0;
+// void Person::greeting() {
+//     cout << this->name << endl;
+// }
+
+// Person::Person(string name, int age) {
+//         this->name = name;
+//         this->age = age;
+//         this->people_number++;
+//     }
+
+// // we can create here the constructor, not just inside the class
+
+
+// int main() {
+
+//     Person p = Person("Andres", 20);
+//     Person *p2 = new Person("Camila", 18);
+
+//     cout << "number of people: " << Person::people_number << endl;
+
+//     p2->updateName("Pollo").greeting();
+
+//     delete p2;
+
+
+
+// }
+
+class Animal {
+    protected:
+        static int numeroAnimales;
+        string alimento;
+    public:
+        Animal();
+        ~Animal();
+        static int obtenerNumeroAnimales();
+        string obtenerAlimento() {
+            return alimento;
+        }
+        void comer(Animal *a) {
+            cout << "Este animal está comiendo " << a->alimento << "... ñom ñom" << endl;
+        }
+};
+
+int Animal::numeroAnimales = 0;
+
+Animal::Animal() {
+    cout << "Creando nuevo animal..." << endl;
+    numeroAnimales += 1;
+}
+
+Animal::~Animal() {
+    cout << "Borrando animal..." << endl;
+    numeroAnimales -= 1;
+}
+
+int Animal::obtenerNumeroAnimales() {
+    return numeroAnimales;
+}
+
+class Herviboro : public Animal {
+    public:
+        Herviboro() : Animal() {
+            this->alimento = "plantas";
+        }
+        void pastar() {
+            cout << "Este animal está pastando..." << endl;
+        }
+};
+
+class Carnivoro : public Animal {
+    public:
+        Carnivoro() : Animal() {
+            this->alimento = "carne";
+        }
+        void cazar() {
+            cout << "Este animal está cazando..." << endl;
+        }
+};
+
+class Omnivoro : public Herviboro, public Carnivoro {
+    public:
+        Omnivoro() : Herviboro(), Carnivoro() {}
+
+    void comer() {
+        cout << "Este animal come lo que sea" << endl;
     }
 
-    string greeting(){
-        return name;
-    }
 
 };
 
 int main() {
+    Animal *a = new Animal();
+    Herviboro *h = new Herviboro();
+    Carnivoro *c = new Carnivoro();
+    Omnivoro *o = new Omnivoro();
 
-    Person p = Person("Andres", 20);
-    Person *p2 = new Person("Camila", 18);
+    cout << "Numero de animales " << Animal::obtenerNumeroAnimales() << endl;
+    
+    //a->comer();    
+    
+    h->pastar();
+    // h->comer();
+    a->comer(h);
 
-    // cout << p.name;
-    // cout << p2->name;
-
-    cout << p2->greeting() << endl;
-
-    delete p2;
+    c->cazar();
+    // c->comer();
+    a->comer(c);
 
 
+    cout << "Omnivoro" << endl;
+    // o->Carnivoro::comer();
+    o->comer();
+    
 
+    delete a;
+    cout << "Numero de animales " << Animal::obtenerNumeroAnimales() << endl;
+
+    //Polimorfism, a way to communicate in the same class but with differents instance of that class 
 }
