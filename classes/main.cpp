@@ -1,4 +1,4 @@
-# include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -37,7 +37,43 @@ using namespace std;
     
 
 #include <climits>
+#include <vector>
+#include <algorithm>
 
 int main(){
 
 }
+
+
+int binary_search(vector<int>& nums, int target){ 
+
+    int left_pointer {};
+    int right_pointer = nums.size() - 1;
+
+
+    while (true) {
+            
+        int current_index = (left_pointer + right_pointer) / 2;
+        int current_pos = nums.at(current_index);
+        
+        if (target == current_pos){
+            return current_index;
+        }
+
+        if (left_pointer >= right_pointer) {
+           return -1;
+        }
+        
+        if (target > current_pos){
+
+            left_pointer = current_index + 1;
+        } 
+        
+        else if (target < current_pos){
+            right_pointer = current_index - 1;
+        }
+        
+    }
+
+}
+
