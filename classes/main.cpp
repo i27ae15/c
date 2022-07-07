@@ -40,7 +40,54 @@ using namespace std;
 #include <vector>
 #include <algorithm>
 
+bool isBadVersion(int bad){
+
+    if (bad >= 1702766719){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+int firstBadVersion(int n) {
+    
+    long long lowest_index {};
+    long long highest_index = n;
+    
+    vector<int> already_visited {};
+
+    while (true){
+
+        long long current_index = (lowest_index + highest_index) / 2;
+        bool current_call = isBadVersion(current_index);
+
+        if (!current_call){
+            lowest_index = current_index + 1;
+        }
+        else {
+            highest_index = current_index - 1;
+        }
+
+        if (find(already_visited.begin(), already_visited.end(), current_index) != already_visited.end()){
+            return current_index + 1;
+        }
+            
+
+
+        already_visited.push_back(current_index);
+
+        }
+
+    }
+
 int main(){
+
+
+    long long bad = firstBadVersion(2126753390);
+
+    cout << "this is the result: " << bad << endl;
+
 
 }
 
@@ -76,4 +123,7 @@ int binary_search(vector<int>& nums, int target){
     }
 
 }
+
+
+
 
