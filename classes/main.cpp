@@ -1,4 +1,4 @@
-# include <iostream>
+#include <iostream>
 
 using namespace std;
 
@@ -286,6 +286,49 @@ void strings(){
 
 }
 
+#include <algorithm>
+
+bool isBadVersion(int bad){
+
+    if (bad >= 1702766719){
+        return true;
+    } else {
+        return false;
+    }
+}
+
+
+int firstBadVersion(int n) {
+    
+    long long lowest_index {};
+    long long highest_index = n;
+    
+    vector<int> already_visited {};
+
+    while (true){
+
+        long long current_index = (lowest_index + highest_index) / 2;
+        bool current_call = isBadVersion(current_index);
+
+        if (!current_call){
+            lowest_index = current_index + 1;
+        }
+        else {
+            highest_index = current_index - 1;
+        }
+
+        if (find(already_visited.begin(), already_visited.end(), current_index) != already_visited.end()){
+            return current_index + 1;
+        }
+            
+
+
+        already_visited.push_back(current_index);
+
+        }
+
+    }
+
 
 int main(){
  
@@ -293,4 +336,48 @@ int main(){
 
     strings();
 
+
+
+    long long bad = firstBadVersion(2126753390);
+
+    cout << "this is the result: " << bad << endl;
+
+
 }
+
+
+int binary_search(vector<int>& nums, int target){ 
+
+    int left_pointer {};
+    int right_pointer = nums.size() - 1;
+
+
+    while (true) {
+            
+        int current_index = (left_pointer + right_pointer) / 2;
+        int current_pos = nums.at(current_index);
+        
+        if (target == current_pos){
+            return current_index;
+        }
+
+        if (left_pointer >= right_pointer) {
+           return -1;
+        }
+        
+        if (target > current_pos){
+
+            left_pointer = current_index + 1;
+        } 
+        
+        else if (target < current_pos){
+            right_pointer = current_index - 1;
+        }
+        
+    }
+
+}
+
+
+
+
