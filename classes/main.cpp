@@ -73,8 +73,6 @@ int firstBadVersion(int n) {
             return current_index + 1;
         }
             
-
-
         already_visited.push_back(current_index);
 
         }
