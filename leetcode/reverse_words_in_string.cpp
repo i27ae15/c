@@ -23,7 +23,7 @@ int main(){
 
 }
 
-
+// pretty good solution
 string first_solution(string s) {
 
     int find_at {};
