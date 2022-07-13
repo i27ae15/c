@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <cmath>
 
 #pragma once
 
@@ -13,10 +14,15 @@ void print(const vector<char> s);
 
 int main () {
 
-    vector<char> s = {'H', 'e', 'l', 'a', 't', 'e', 'l', 'a', 't', 'e'};
+    // vector<char> s = {'H', 'e', 'l', 'a', 't', 'e', 'l', 'a', 't', 'e'};
 
-    second_solution(s);
-    print(s);
+    double r = round(double(5) / 2);
+    
+
+    cout << r;
+
+    // second_solution(s);
+    // print(s);
    
 }
 
@@ -35,6 +41,7 @@ void first_solution(vector<char>& s) {
 
         pointer_one++;
         pointer_two--;
+
 
     }
 
