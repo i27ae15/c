@@ -26,10 +26,24 @@ auto function(){
     }
 
     cout << endl;
-
 }
+
+
+
+// we can creaet inline function, these are faster than normal functions
+
+inline int add_numbers(int a, int b){ return a + b; }
+
+
+unsigned long long factorial(unsigned long long n){
+    if (n == 0) return 1;
+
+    return n * factorial(n-1);
+}
+
+
 
 int main (){
-
-    function();
+    cout << factorial(20) << endl;
 }
+
