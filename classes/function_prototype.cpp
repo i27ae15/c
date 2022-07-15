@@ -91,6 +91,8 @@ void base_number(int &num){
 
     test--;
 
+    
+
     cout << test << endl;
     
     // this will be available for all the instances of this function

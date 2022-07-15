@@ -43,7 +43,7 @@ vector<int> first_solution(vector<int>& numbers, int target){
             left++;
         }
     }
-
+    
     cout << "right: " << right << endl;
     cout << "left: " << left << endl;
 
@@ -52,7 +52,7 @@ vector<int> first_solution(vector<int>& numbers, int target){
     while (numbers[right] == numbers[right - 1] && right >= 2){
         if (numbers[right - 1] == numbers[right - 2]){right--;} else{break;}
     }
-
+    
     while (numbers[left] == numbers[left + 1] && left >= numbers.size() - 3) {
         if (numbers[left + 1] == numbers[left + 2]){left++;} else{break;}
     }
