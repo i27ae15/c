@@ -24,7 +24,7 @@ int main(){
 
 
 // time limit exceeded
-// with the fixes is very slow, this could be better
+// with the chnages, the function works, but it is very slow, this could be better
 int first_solution(string s) {
 
     map<char, int> found_at;
